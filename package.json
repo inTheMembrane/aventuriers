@@ -1,0 +1,19 @@
+{
+  "name": "aventurier",
+  "version": "1.0.0",
+  "description": "AVENTURIER  --- This is an education/training exercise, all copyrights and trademark rights belong to their rightful owners ---",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inTheMembrane/aventuriers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inTheMembrane/aventuriers/issues"
+  },
+  "homepage": "https://github.com/inTheMembrane/aventuriers#readme"
+}
