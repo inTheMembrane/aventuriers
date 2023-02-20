@@ -1,3 +1,5 @@
+// Routing controller
+
 const indexController = {
     pageHome: (req, res) => {
         res.render('index');

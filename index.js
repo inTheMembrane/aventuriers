@@ -1,38 +1,47 @@
+// Import outside modules
 import express from "express";
-import router from "./app/routers/router.js";
-import expressSession from "express-session";
-// require('dotenv').config()
+import session from "express-session"
+import dotenv from "dotenv"
+dotenv.config()
 
+// Import project modules
+import router from "./app/router.js";
+
+// Setup express engine
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./app/views");
 
-// on passe par le middleware de gestion des session utilisateurs
+// Setup encoding to allow POST 
+app.use(express.urlencoded({ extended: true }));
+
+// Setup sessions with cookies to allow game-state to be maintained
 app.use(
-  expressSession({
+  session({
     resave: true,
     saveUninitialized: true,
     secret: "Guess it!",
     cookie: {
       secure: false,
-      maxAge: 1000 * 60 * 60, // ça fait une heure
+      maxAge: 1000 * 60 * 60 * 24 * 30, // One month
     },
   })
 );
 
+// Designate static directory
 app.use(express.static("public"));
 
-// routage !
+// Designate router
 app.use(router);
 
-
+// Server start console messages
 let message = "";
 if (process.env.MODE === "prod") {
-  message = "Le serveur est lancé sur http://monsupernomdedomaine.fr";
+  message = "Listening on http://myURL.com";
 } else {
   //Sinon, c'est qu'on est en local en train de coder
-  message = `Le serveur est lancé sur localhost au port ${PORT}`;
+  message = `Listening on http://localhost:${PORT}`;
 }
 
 // on lance le serveur
