@@ -6,9 +6,6 @@ BEGIN;
 INSERT INTO "colour" ("id", "name") VALUES
 
 
-INSERT INTO "length" ("id", "size") VALUES
-
-
 INSERT INTO "type" ("id", "name") VALUES
 
 
@@ -61,13 +58,23 @@ INSERT INTO "city" ("id", "name") VALUES
 (46,'Zágráb'),
 (47,'Zürich');
 
-INSERT INTO "route" ("id", "name", "type_id", "length_id" ,"colour_id", "city_id", "city_id_1") VALUES
+INSERT INTO "route" ("id", "type_id", "length_id" ,"colour_id", "city_id", "city_id_1") VALUES
 
 
 INSERT INTO "deck" ("id", "name", "blue", "red", "green", "yellow", "black", "orange", "white", "pink", "engine") VALUES
 
 
-INSERT INTO "mission" ("id", "name", "points", "city_id", "city_id_1") VALUES
+INSERT INTO "mission" ("id", "name", "points", "type_id", "city_id", "city_id_1") VALUES
 
+
+COMMIT;
+
+BEGIN;
+-- Alter table to name routes and missions
+select t.*,
+       concat_ws(':', least(origin, destination) as city1,
+                 greatest(origin, destination) 
+                ) as route_name
+from t;
 
 COMMIT;

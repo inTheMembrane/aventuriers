@@ -43,6 +43,14 @@
         <!-- Form to start a new game, available if user signed in -->
         <h3>Start new game</h3>
         <form method="post" action="">
+            <label for="game_name">How do you wish to call this game ?</label>
+            <input
+                type="text"
+                name="game_name"
+                id="game_name"
+                placeholder="Choose a name"
+                required
+            />
             <label for="player_number">Number of players</label>
             <input
                 type="number"
