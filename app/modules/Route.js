@@ -1,15 +1,15 @@
-import { Model, DataTypes } from 'sequelize';
-import sequelize from '../database.js';
+import { Model, DataTypes } from "sequelize";
+import { sequelize } from "../database.js";
 
-class Route extends Model{};
+export class Route extends Model {}
 
-Route.init({
-  name: { type: DataTypes.TEXT}, 
-  length: { type: DataTypes.INTEGER, allowNull: false}, 
-},{
-  sequelize: sequelize,
-  tableName: "route"
-
-})
-
-export default Route;
+Route.init(
+    {
+        name: { type: DataTypes.TEXT },
+        length: { type: DataTypes.INTEGER, allowNull: false },
+    },
+    {
+        sequelize: sequelize,
+        tableName: "route",
+    }
+);

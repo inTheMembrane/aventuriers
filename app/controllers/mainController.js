@@ -1,6 +1,6 @@
 // Routing controller
 
-const indexController = {
+export const indexController = {
     pageHome: (req, res) => {
         res.render('index');
     },
@@ -10,5 +10,3 @@ const indexController = {
 
     
 }
-
-export default indexController;

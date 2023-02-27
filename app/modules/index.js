@@ -1,12 +1,12 @@
-import City from './City.js';
-import Colour from './Colour.js';
-import Deck from './Deck.js';
-import Game from './Game.js';
-import Mission from './Mission.js';
-import Player from './Player.js';
-import Route from './Route.js';
-import Type from './Type.js';
-import User from './User.js';
+import {City} from './City.js';
+import {Colour} from './Colour.js';
+import {Deck} from './Deck.js';
+import {Game} from './Game.js';
+import {Mission} from './Mission.js';
+import {Player} from './Player.js';
+import {Route} from './Route.js';
+import {Type} from './Type.js';
+import {User} from './User.js';
 
 function createHasManyBelongsToAssociation(ClassHasMany, ClassBelongsTo, alias = `${ClassBelongsTo.name.toLowerCase()}_${ClassHasMany.name.toLowerCase()}`) { // example with Game and City
         ClassHasMany.hasMany(ClassBelongsTo, { // Game.hasMany(City {
@@ -78,4 +78,4 @@ Deck.belongsTo(Player, {
     as: "player_deck"
 });
 
-export default {City, Colour, Deck, Game, Mission, Player, Route, Type, User}
+export {City, Colour, Deck, Game, Mission, Player, Route, Type, User}
