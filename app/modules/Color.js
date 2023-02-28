@@ -1,16 +1,16 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 
-export class Colour extends Model {}
+export class Color extends Model {}
 
-Colour.init(
+Color.init(
     {
         name: { type: DataTypes.TEXT, allowNull: false },
     },
     {
         sequelize: sequelize,
-        tableName: "colour",
+        tableName: "color",
     }
 );
 
-export default Colour;
+export default Color;

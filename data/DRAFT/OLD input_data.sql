@@ -3,7 +3,7 @@
 BEGIN;
 
 -- INSERT INTO "answer" ("id", "description", "question_id") VALUES
-INSERT INTO "colour" ("id", "name") VALUES
+INSERT INTO "color" ("id", "name") VALUES
 (1,'blue'),
 (2,'red'),
 (3,'green'),
@@ -72,7 +72,7 @@ INSERT INTO "city" ("id", "name") VALUES
 (46,'Zágráb'),
 (47,'Zürich');
 
-INSERT INTO "route" ("id", "type_id", "length_id" ,"colour_id", "city_id", "city_id_1") VALUES
+INSERT INTO "route" ("id", "type_id", "length_id" ,"color_id", "city_id", "city_id_1") VALUES
 (1,1,3,8,22,24),
 (2,1,3,6,11,24),
 (3,2,3,5,24,29),
@@ -233,7 +233,7 @@ COMMIT;
 BEGIN;
 
 SELECT setval('city_id_seq', (SELECT MAX(id) from "city"));
-SELECT setval('colour_id_seq', (SELECT MAX(id) from "colour"));
+SELECT setval('color_id_seq', (SELECT MAX(id) from "color"));
 SELECT setval('deck_id_seq', (SELECT MAX(id) from "deck"));
 SELECT setval('game_id_seq', (SELECT MAX(id) from "game"));
 SELECT setval('hidden_deck_id_seq', (SELECT MAX(id) from "hidden_deck"));

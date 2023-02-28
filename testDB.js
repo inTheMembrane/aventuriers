@@ -1,4 +1,4 @@
-import {City, Colour, Deck, Game, Mission, Player, Route, Type, User} from './app/modules/index.js'
+import {City, Color, Deck, Game, Mission, Player, Route, Type, User} from './app/modules/index.js'
 
 async function test() {
     try{

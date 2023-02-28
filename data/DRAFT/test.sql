@@ -9,7 +9,14 @@ OWNS2, 01 city, 0N player
 ENDS2, 11 mission, 0N city
 
 user: user_id, name, email, password
-game: game_id, name, hidden_deck, save_date
+game: game_id, name, save_date
+save_deck: save_deck, 
+save_route:
+save_city:
+save_route:
+
+
+
 deck: deck_id, name, blue, red, green, yellow, black, orange, white, pink, engine
 player: player_id, name, available_trains, available_stations, points, visited_countries
 
@@ -29,3 +36,7 @@ ENDS, 1N city, 11 route
 type: type_id, name
 ISTYPE, 0N type, 11 mission
 ISTYPE2, 0N type, 11 route
+
+
+deck has many cards 
+card has one color
