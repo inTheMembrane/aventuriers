@@ -10,8 +10,8 @@ import router from "./app/router.js";
 // Setup express engine
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.set("view engine", "ejs");
-app.set("views", "./app/views");
+// app.set("view engine", "ejs");
+// app.set("views", "./app/views");
 
 // Setup encoding to allow POST 
 app.use(express.urlencoded({ extended: true }));
@@ -30,7 +30,7 @@ app.use(
 );
 
 // Designate static directory
-app.use(express.static("public"));
+app.use(express.static("assets"));
 
 // Designate router
 app.use(router);
