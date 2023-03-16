@@ -1,16 +1,16 @@
-import { Card } from './Card.js';
-import {City} from './City.js';
-import { ClaimedCity } from './ClaimedCity.js';
-import { ClaimedMission } from './ClaimedMission.js';
-import { ClaimedRoute } from './ClaimedRoute.js';
-import {Color} from './Color.js';
-import {Deck} from './Deck.js';
-import {Game} from './Game.js';
-import {Mission} from './Mission.js';
-import {Player} from './Player.js';
-import {Route} from './Route.js';
-import {Type} from './Type.js';
-import {User} from './User.js';
+import { Card } from "./Card.js";
+import { City } from "./City.js";
+import { ClaimedCity } from "./ClaimedCity.js";
+import { ClaimedMission } from "./ClaimedMission.js";
+import { ClaimedRoute } from "./ClaimedRoute.js";
+import { Color } from "./Color.js";
+import { Deck } from "./Deck.js";
+import { Game } from "./Game.js";
+import { Mission } from "./Mission.js";
+import { Player } from "./Player.js";
+import { Route } from "./Route.js";
+import { Type } from "./Type.js";
+import { User } from "./User.js";
 
 function createHasManyBelongsToAssociation( // One-To-Many = 0N:11
     ClassHasMany,
@@ -69,68 +69,82 @@ function createBelongsToManyAssociation( // Many-To-Many = 0N:0N
 }
 
 // city 0N:0N game
-createBelongsToManyAssociation(Game, City, "claimed_city")
+createBelongsToManyAssociation(Game, City, "claimed_city");
 // claimed_city 11:0N player
-createHasManyBelongsToAssociation(Player, ClaimedCity, "cityOwner")
+createHasManyBelongsToAssociation(Player, ClaimedCity, "cityOwner");
 
 // route 0N:0N game
-createBelongsToManyAssociation(Game, Route, "claimed_route")
+createBelongsToManyAssociation(Game, Route, "claimed_route");
 // claimed_route 11:0N player
-createHasManyBelongsToAssociation(Player, ClaimedRoute, "routeOwner")
+createHasManyBelongsToAssociation(Player, ClaimedRoute, "routeOwner");
 
 // mission 0N:0N game
-createBelongsToManyAssociation(Game, Mission, "claimed_mission")
+createBelongsToManyAssociation(Game, Mission, "claimed_mission");
 // claimed_mission 11:0N player
-createHasManyBelongsToAssociation(Player, ClaimedMission, "missionOwner")
+createHasManyBelongsToAssociation(Player, ClaimedMission, "missionOwner");
 
 // deck 11:0N game
-createHasManyBelongsToAssociation(Game, Deck)
+createHasManyBelongsToAssociation(Game, Deck);
 // deck 11:0N type
-createHasManyBelongsToAssociation(Type, Deck)
+createHasManyBelongsToAssociation(Type, Deck);
 
 // card 11:0N deck
-createHasManyBelongsToAssociation(Deck, Card)
+createHasManyBelongsToAssociation(Deck, Card);
 // card 11:0N color
-createHasManyBelongsToAssociation(Color, Card)
+createHasManyBelongsToAssociation(Color, Card);
 
 // game 11:0N user
-createHasManyBelongsToAssociation(User, Game, "host")
+createHasManyBelongsToAssociation(User, Game, "host");
 // game 01:01 player
-createHasOneBelongsToAssociation(Player, Game, "isTurn")
+createHasOneBelongsToAssociation(Player, Game, "isTurn");
 
 // STARTS, mission 11:0N city
-createHasManyBelongsToAssociation(City, Mission, "startCity")
+createHasManyBelongsToAssociation(City, Mission, "startCity");
 // ENDS, mission 11:0N city // need to do it manually because different foreign key
 City.hasMany(Mission, {
     foreignKey: "city_id_1",
-    as: "endCity"
+    as: "endCity",
 });
 Mission.belongsTo(City, {
     foreignKey: "city_id_1",
-    as: "endCity"
+    as: "endCity",
 });
 
 // player 11:0N color
-createHasManyBelongsToAssociation(Color, Player)
+createHasManyBelongsToAssociation(Color, Player);
 // deck 01:11 player
-createHasOneBelongsToAssociation(Deck, Player, "hand")
+createHasOneBelongsToAssociation(Deck, Player, "hand");
 // player 11:0N game
-createHasManyBelongsToAssociation(Game, Player)
+createHasManyBelongsToAssociation(Game, Player);
 
 // route 11:0N type
-createHasManyBelongsToAssociation(Type, Route)
+createHasManyBelongsToAssociation(Type, Route);
 // route 11:0N color
-createHasManyBelongsToAssociation(Color, Route)
+createHasManyBelongsToAssociation(Color, Route);
 // STARTS, route 11:0N city
-createHasManyBelongsToAssociation(City, Route, "startCity")
+createHasManyBelongsToAssociation(City, Route, "startCity");
 // ENDS, 11 route 11:0N city // need to do it manually because different foreign key
 City.hasMany(Route, {
     foreignKey: "city_id_1",
-    as: "endCity"
+    as: "endCity",
 });
 Route.belongsTo(City, {
     foreignKey: "city_id_1",
-    as: "endCity"
+    as: "endCity",
 });
 
-export {City, Color, Deck, Game, Mission, Player, Route, Type, User}
+export {
+    City,
+    Color,
+    Deck,
+    Game,
+    Mission,
+    Player,
+    Route,
+    Type,
+    User,
+    Card,
+    ClaimedCity,
+    ClaimedMission,
+    ClaimedRoute,
+};
