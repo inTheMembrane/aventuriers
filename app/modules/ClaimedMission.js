@@ -1,15 +1,14 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 
-export class City extends Model {}
+export class ClaimedMission extends Model {}
 
-City.init(
+ClaimedMission.init(
     {
-        name: { type: DataTypes.TEXT, allowNull: false },
     },
     {
         sequelize: sequelize,
-        tableName: "city",
+        tableName: "claimed_mission",
         underscored: true,
     }
 );

@@ -10,6 +10,7 @@ Color.init(
     {
         sequelize: sequelize,
         tableName: "color",
+        underscored: true,
     }
 );
 

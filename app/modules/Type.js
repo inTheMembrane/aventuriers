@@ -10,5 +10,6 @@ Type.init(
     {
         sequelize: sequelize,
         tableName: "type",
+        underscored: true,
     }
 );

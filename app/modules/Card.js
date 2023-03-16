@@ -1,15 +1,15 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
 
-export class City extends Model {}
+export class Card extends Model {}
 
-City.init(
+Card.init(
     {
-        name: { type: DataTypes.TEXT, allowNull: false },
+        position: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     },
     {
         sequelize: sequelize,
-        tableName: "city",
+        tableName: "card",
         underscored: true,
     }
 );

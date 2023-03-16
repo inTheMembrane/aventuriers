@@ -11,5 +11,6 @@ Route.init(
     {
         sequelize: sequelize,
         tableName: "route",
+        underscored: true,
     }
 );

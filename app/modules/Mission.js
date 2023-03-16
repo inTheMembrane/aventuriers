@@ -6,11 +6,16 @@ export class Mission extends Model {}
 Mission.init(
     {
         name: { type: DataTypes.TEXT },
+        mainMission: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: 0,
+        },
         points: { type: DataTypes.INTEGER, allowNull: false },
-        completed: { type: DataTypes.BOOLEAN, allowNull: false },
     },
     {
         sequelize: sequelize,
         tableName: "mission",
+        underscored: true,
     }
 );

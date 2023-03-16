@@ -6,13 +6,31 @@ export class Player extends Model {}
 Player.init(
     {
         name: { type: DataTypes.TEXT, allowNull: false },
-        available_trains: { type: DataTypes.INTEGER, allowNull: false },
-        available_stations: { type: DataTypes.INTEGER, allowNull: false },
-        points: { type: DataTypes.INTEGER, allowNull: false },
-        visited_countries: { type: DataTypes.INTEGER, allowNull: false },
+        availableTrains: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+        },
+        availableStations: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+        },
+        points: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+        visitedCountries: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+        },
+        playOrder: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+        },
     },
     {
         sequelize: sequelize,
         tableName: "player",
+        underscored: true,
     }
 );
