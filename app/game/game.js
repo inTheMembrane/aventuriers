@@ -60,10 +60,16 @@ const startWagon = 42;
 
 const startStation = 3;
 
+// TODO Parameter for min and max number of players, cf. index.ejs
+const numPlayerRange = {min : 2, max : 5}
+
 /*=========================================================================================================================
 * Routes
 =========================================================================================================================*/
-const routes = {
+
+
+// TODO add that 2 and 3 player games only one of the double routes can be used
+ const routes = {
   types: ["normal", "tunnel", { ferry: 0 }, "double"],
   lengths: [1, 2, 3, 4, 6, 8],
   AB: {

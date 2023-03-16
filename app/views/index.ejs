@@ -1,0 +1,73 @@
+<%- include('partials/header') %>
+<main>
+    <h2>Welcome to the non-official app for Ticket to Ride : Europe</h2>
+    <!-- if user is not signed in -->
+
+    <% if(!locals.user) { %>
+    <h2>It's time to play !</h2>
+    <div>
+        New to the game ? <a href="/register">Click here</a> to register an
+        account an start playing
+    </div>
+    <div>
+        Returning player ? <a href="/signin">Click here</a> to sign in and get
+        back to the game
+    </div>
+    <!-- if user is signed in -->
+    <% } else { %>
+    <h2>It's time to play <%= locals.user.name %> !</h2>
+    <div>
+        <!-- if user already has ongoing game -->
+        <% if(locals.user.games) { %>
+        <h3>Resume game</h3>
+        <!-- list all current games, with players in each and a button to resume specific game -->
+        <% for (const game of games) { %>
+        <div>
+            Game <%= game.id %> with :
+            <ul>
+                <!-- list all the players in this game -->
+                <% for (const player of players) { %>
+                <li><%= player.name %></li>
+                <% } %>
+            </ul>
+            <!-- button to resume this game -->
+            <form method="post" action="">
+                <input type="hidden" name="game_id" value="<%= game.id %>" />
+                <button type="submit" name="action" value="resume_game">
+                    Resume game
+                </button>
+            </form>
+        </div>
+        <% } %>
+        <% } %>
+        <!-- Form to start a new game, available if user signed in -->
+        <h3>Start new game</h3>
+        <form method="post" action="">
+            <label for="game_name">How do you wish to call this game ?</label>
+            <input
+                type="text"
+                name="game_name"
+                id="game_name"
+                placeholder="Choose a name"
+                required
+            />
+            <label for="player_number">Number of players</label>
+            <input
+                type="number"
+                name="player_number"
+                id="player_number"
+                placeholder="Between <%= minPlayer %> and <%= maxPlayer %>"
+                min="<% parseInt(maxPlayer) %>"
+                max="<% parseInt(maxPlayer) %>"
+                required
+            />
+            <button type="submit" name="action" value="new_game">
+                Start new game
+            </button>
+        </form>
+    </div>
+    <% } %>
+
+    <!-- https://stackoverflow.com/questions/8712398/multiple-forms-or-multiple-submits-in-a-page -->
+</main>
+<%- include('partials/footer') %>
