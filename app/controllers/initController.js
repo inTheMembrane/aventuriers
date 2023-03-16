@@ -24,3 +24,4 @@ export const indexController = {
         res.render("index");
     },
 };
+

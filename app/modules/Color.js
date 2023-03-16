@@ -14,4 +14,4 @@ Color.init(
     }
 );
 
-export default Color;
+// export default Color;
